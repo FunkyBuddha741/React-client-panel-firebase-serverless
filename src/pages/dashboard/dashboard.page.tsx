@@ -30,7 +30,7 @@ function Dashboard() {
 	}, [clients]);
 
 	return (
-		<DashboardMain>
+		<DashboardMain >
 			<DashboardContainer>
 				<DashboardHeading>
 					<DashboardLogo className="fas fa-users fa-2x">

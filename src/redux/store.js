@@ -11,8 +11,6 @@ import { createFirestoreInstance, firestoreReducer } from "redux-firestore";
 import { notifyReducer } from "./Notifyuser/notifyuser.reducer";
 import { UserSettingsReducer } from "./SettingsUser/settings.user.reducer";
 
-// Reducers
-// todo
 
 const firebaseConfig = {
 	apiKey: "AIzaSyAcv5q21NzRbzT125N7UKxUKj3dm6yx8SY",

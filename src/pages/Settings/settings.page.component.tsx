@@ -11,6 +11,7 @@ function SettingsPage() {
 			<BackToDashboard
 				to="/"
 				style={{ width: "80%", margin: "auto", paddingBottom: "15px" }}
+				
 			>
 				<i className="fas fa-arrow-circle-left"></i>
 				<h5 style={{ paddingLeft: "10px" }}>Back to dashboard</h5>

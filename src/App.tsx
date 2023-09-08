@@ -17,6 +17,8 @@ import {
 } from "./components/helper/auth";
 import Spinner from "./components/spinner/Spinner";
 import SettingsPage from "./pages/Settings/settings.page.component";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import "./App.css";
 
 function App() {
 	return (
@@ -24,42 +26,58 @@ function App() {
 			<ReactReduxFirebaseProvider {...rrfProps}>
 				<Router>
 					<Header />
-					<Switch>
-						<Route
-							exact
-							path="/login"
-							component={UserIsNotAuthenticated(Login)}
-						/>
-						<Route
-							exact
-							path="/register"
-							component={UserIsNotAuthenticated(Register)}
-						/>
-						<Route exact path="/" component={UserIsAuthenticated(Dashboard)} />
-						<Route
-							exact
-							path="/client/add"
-							component={UserIsAuthenticated(AddNewClients)}
-						/>
+					<Route
+						render={({ location }) => (
+							<TransitionGroup>
+								<CSSTransition
+									key={location.key}
+									timeout={300}
+									classNames="fade"
+								>
+									<Switch location={location}>
+										<Route
+											exact
+											path="/login"
+											component={UserIsNotAuthenticated(Login)}
+										/>
+										<Route
+											exact
+											path="/register"
+											component={UserIsNotAuthenticated(Register)}
+										/>
+										<Route
+											exact
+											path="/"
+											component={UserIsAuthenticated(Dashboard)}
+										/>
+										<Route
+											exact
+											path="/client/add"
+											component={UserIsAuthenticated(AddNewClients)}
+										/>
 
-						<Route
-							exact
-							path="/client/:id"
-							component={UserIsAuthenticated(ClientDetailsPage)}
-						/>
-						<Route
-							exact
-							path="/client/edit/:id"
-							component={UserIsAuthenticated(ClientEditPage)}
-						/>
-						<Route
-							exact
-							path="/settings"
-							component={UserIsAuthenticated(SettingsPage)}
-						/>
-						{/* redirects to my login page if url is gibberish */}
-						<Route path="*" component={Dashboard} />
-					</Switch>
+										<Route
+											exact
+											path="/client/:id"
+											component={UserIsAuthenticated(ClientDetailsPage)}
+										/>
+										<Route
+											exact
+											path="/client/edit/:id"
+											component={UserIsAuthenticated(ClientEditPage)}
+										/>
+										<Route
+											exact
+											path="/settings"
+											component={UserIsAuthenticated(SettingsPage)}
+										/>
+										{/* redirects to my login page if url is gibberish */}
+										<Route path="*" component={Dashboard} />
+									</Switch>
+								</CSSTransition>
+							</TransitionGroup>
+						)}
+					/>
 				</Router>
 			</ReactReduxFirebaseProvider>
 		</Provider>
