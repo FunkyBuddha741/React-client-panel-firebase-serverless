@@ -1,3 +1,9 @@
+#Client-Panel-Web-Application
+
+This is a simple project showcasing a react frontend client with a google firebase as the serverless server. It has a registration and login dashboard that registers and logs users to the page with a table describing the clients credentials and the amount that they owe.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
